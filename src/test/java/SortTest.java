@@ -33,6 +33,7 @@ public class SortTest {
         assertSorts(intList(1), intList(1));
         assertSorts(intList(2, 1), intList(1, 2));
         assertSorts(intList(1, 2), intList(1, 2));
+        assertSorts(intList(1, 2, 3), intList(1, 2, 3));
     }
 
     private List<Integer> sort(List<Integer> list) {
@@ -40,14 +41,21 @@ public class SortTest {
             return list;
 
         List<Integer> sorted = new ArrayList<>();
+        List<Integer> left = list.subList(0, list.size()/2);
+        List<Integer> right = list.subList(list.size()/2, list.size());
 
-        if (list.get(0) > list.get(1)) {
-            sorted.add(list.get(1));
-            sorted.add(list.get(0));
-        } else {
-            sorted.add(list.get(0));
-            sorted.add(list.get(1));
+        int i = 0;
+        int j = 0;
+        while (i < left.size() && j < right.size()) {
+            if (left.get(i) < right.get(j))
+                sorted.add(left.get(i++));
+            else
+                sorted.add(right.get(j++));
         }
+        if (i < left.size())
+            sorted.addAll(left.subList(i, left.size()));
+        else
+            sorted.addAll(right.subList(j, right.size()));
 
         return sorted;
     }
