@@ -44,12 +44,15 @@ public class SortTest {
         if (list.size() <= 1)
             return list;
 
-        List<Integer> sorted = new ArrayList<>();
         List<Integer> left = sort(list.subList(0, list.size()/2));
         List<Integer> right = sort(list.subList(list.size()/2, list.size()));
 
-        int i = 0;
-        int j = 0;
+        return merge(left, right);
+    }
+
+    private List<Integer> merge(List<Integer> left, List<Integer> right) {
+        List<Integer> sorted = new ArrayList<>();
+        int i = 0, j = 0;
         while (i < left.size() && j < right.size()) {
             if (left.get(i) < right.get(j))
                 sorted.add(left.get(i++));
