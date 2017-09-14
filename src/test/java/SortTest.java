@@ -37,14 +37,10 @@ public class SortTest {
     }
 
     private List<Integer> sort(List<Integer> list) {
-        for (int i = 0; i < list.size() - 1; i++)
-            if (list.get(i) > list.get(i + 1))
-                swap(i, list);
-
-        for (int i = 0; i < list.size() - 2; i++)
-            if (list.get(i) > list.get(i + 1))
-                swap(i, list);
-
+        for (int i = 1; list.size() - i > 0; i++)
+            for (int j = 0; j < list.size() - i; j++)
+                if (list.get(j) > list.get(j + 1))
+                    swap(j, list);
         return list;
     }
 
