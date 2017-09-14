@@ -42,34 +42,19 @@ public class SortTest {
             return list;
 
         List<Integer> sorted = new ArrayList<>();
+        List<Integer> l = new ArrayList<>();
+        int m = list.get(0);
+        List<Integer> h = new ArrayList<>();
 
-        if (list.size() == 2) {
-            if (list.get(0) > list.get(1)) {
-                sorted.add(list.get(1));
-                sorted.add(list.get(0));
-            } else {
-                sorted.add(list.get(0));
-                sorted.add(list.get(1));
-            }
+        for (int i : list) {
+            if (i < m)
+                l.add(i);
+            if (i > m)
+                h.add(i);
         }
-
-        if (list.size() == 3) {
-            if (list.get(0) < list.get(1) && list.get(1) < list.get(2)) {
-                sorted.add(list.get(0));
-                sorted.add(list.get(1));
-                sorted.add(list.get(2));
-            } else {
-                if (list.get(0) > list.get(1)) {
-                    sorted.add(list.get(1));
-                    sorted.add(list.get(0));
-                    sorted.add(list.get(2));
-                } else {
-                    sorted.add(list.get(2));
-                    sorted.add(list.get(0));
-                    sorted.add(list.get(1));
-                }
-            }
-        }
+        sorted.addAll(l);
+        sorted.add(m);
+        sorted.addAll(h);
 
         return sorted;
     }
