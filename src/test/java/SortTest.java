@@ -36,6 +36,7 @@ public class SortTest {
         assertSorts(intList(2, 1, 3), intList(1, 2, 3));
         assertSorts(intList(2, 3, 1), intList(1, 2, 3));
         assertSorts(intList(3, 2, 1), intList(1, 2, 3));
+        assertSorts(intList(1, 3, 2), intList(1, 2, 3));
     }
 
     private List<Integer> sort(List<Integer> list) {
@@ -55,7 +56,7 @@ public class SortTest {
         }
         sorted.addAll(sort(l));
         sorted.add(m);
-        sorted.addAll(h);
+        sorted.addAll(sort(h));
 
         return sorted;
     }
