@@ -33,10 +33,15 @@ public class SortTest {
         assertSorts(intList(1), intList(1));
         assertSorts(intList(2, 1), intList(1, 2));
         assertSorts(intList(3, 1, 2), intList(1, 2, 3));
+        assertSorts(intList(3, 2, 1), intList(1, 2, 3));
     }
 
     private List<Integer> sort(List<Integer> list) {
         for (int i = 0; i < list.size() - 1; i++)
+            if (list.get(i) > list.get(i + 1))
+                swap(i, list);
+
+        for (int i = 0; i < list.size() - 2; i++)
             if (list.get(i) > list.get(i + 1))
                 swap(i, list);
 
