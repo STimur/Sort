@@ -36,23 +36,16 @@ public class SortTest {
     }
 
     private List<Integer> sort(List<Integer> list) {
-        if (list.size() <= 1)
-            return list;
-
-        if (list.get(0) > list.get(1)) {
-            int t = list.get(0);
-            list.set(0, list.get(1));
-            list.set(1, t);
-        }
-
-        if (list.size() == 3) {
-            if (list.get(1) > list.get(2)) {
-                int t = list.get(1);
-                list.set(1, list.get(2));
-                list.set(2, t);
-            }
-        }
+        for (int i = 0; i < list.size() - 1; i++)
+            if (list.get(i) > list.get(i + 1))
+                swap(i, list);
 
         return list;
+    }
+
+    private void swap(int i, List<Integer> list) {
+        int t = list.get(i);
+        list.set(i, list.get(i + 1));
+        list.set(i + 1, t);
     }
 }
