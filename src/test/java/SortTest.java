@@ -37,6 +37,7 @@ public class SortTest {
         assertSorts(intList(2, 3, 1), intList(1, 2, 3));
         assertSorts(intList(3, 2, 1), intList(1, 2, 3));
         assertSorts(intList(1, 3, 2), intList(1, 2, 3));
+        assertSorts(intList(1, 3, 2, 2), intList(1, 2, 2, 3));
     }
 
     private List<Integer> sort(List<Integer> list) {
@@ -48,10 +49,10 @@ public class SortTest {
         int m = list.get(0);
         List<Integer> h = new ArrayList<>();
 
-        for (int i : list) {
+        for (int i : list.subList(1, list.size())) {
             if (i < m)
                 l.add(i);
-            if (i > m)
+            else
                 h.add(i);
         }
         sorted.addAll(sort(l));
