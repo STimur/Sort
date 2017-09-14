@@ -36,6 +36,7 @@ public class SortTest {
         assertSorts(intList(1, 2, 3), intList(1, 2, 3));
         assertSorts(intList(2, 3, 1), intList(1, 2, 3));
         assertSorts(intList(3, 2, 1, 4), intList(1, 2, 3, 4));
+        assertSorts(intList(3, 2, 2, 1, 4), intList(1, 2, 2, 3, 4));
     }
 
     private List<Integer> sort(List<Integer> list) {
