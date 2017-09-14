@@ -41,9 +41,12 @@ public class SortTest {
     }
 
     private List<Integer> sort(List<Integer> list) {
-        if (list.size() <= 1)
+        if (list.isEmpty())
             return list;
+        return quickSort(list);
+    }
 
+    private List<Integer> quickSort(List<Integer> list) {
         List<Integer> sorted = new ArrayList<>();
         List<Integer> l = new ArrayList<>();
         int m = list.get(0);
